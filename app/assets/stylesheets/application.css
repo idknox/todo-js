@@ -33,7 +33,7 @@ input {
     border-top: 1px solid black;
 }
 
-#todos {
+#todos, #todos-completed {
     width: 300px;
     margin: 0 auto;
 }
@@ -54,7 +54,7 @@ ul {
     color: #fff;
 }
 
-#close, .close-todo {
+#close, .close-todo, .complete-todo {
     color: #000;
     text-decoration: none;
     float: right;
@@ -70,4 +70,8 @@ a {
 
 .close-todo {
     color: red;
+}
+
+.complete-todo {
+    color: green;
 }
