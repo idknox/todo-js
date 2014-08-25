@@ -15,18 +15,23 @@
 //= require_tree .
 
 $(document).ready(function () {
-  todos = $('#todos');
   $('#todos-container').hide();
+  $('#todos-container').append("<div id='todos'></div>");
+
+  todos = $('#todos');
+
   todos.append("<h2>Todo!</h2><div id='flash'></div><ul id='todo-list'></ul>");
+  flash = $('#flash');
 
   $('#form').append("<h1>Todoly</h1><input type='text' id='todo'/><br><button id='submit'>Create Todo</button>");
 
   $('#submit').on('click', function () {
-    $('#flash').show();
-    $('#flash').empty();
+    flash.show();
+    flash.empty();
     $('#todos-container').show();
-    $('#todo-list').append("<li>" + $('#todo').val() + "</li>");
-    $('#flash').append("Todo created<a href='javascript:void(0)' id='close'>X</a>");
+    $('#todo-list').append("<li>" + $('#todo').val() + "<a href='#' class='close-todo'>X</a></li>");
+    flash.append("<span>Todo created</span><a href='#' id='close'>X</a>");
+    flash.css('background-color', 'green');
 
     var stopFlash = function () {
       $('#flash').slideUp();
@@ -34,8 +39,22 @@ $(document).ready(function () {
     window.setTimeout(stopFlash, 5000);
   });
 
-  $('#flash').on('click', '#close', function () {
+  flash.on('click', '#close', function () {
     $('#flash').slideUp();
+  });
+
+  todos.on('click', '.close-todo', function () {
+    $(this).parent().remove();
+    flash.show();
+    flash.children('span').remove();
+    flash.removeAttr('background-color');
+    flash.css('background-color', 'red');
+    flash.append('<span>Todo deleted</span>');
+
+    var stopFlash = function () {
+      $('#flash').slideUp();
+    };
+    window.setTimeout(stopFlash, 5000);
   });
 
 });

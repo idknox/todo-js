@@ -46,15 +46,28 @@ ul {
 }
 
 #flash {
-    background-color: green;
     color: #fff;
 }
 
-#close {
+#flash-del {
+    background-color: red;
+    color: #fff;
+}
+
+#close, .close-todo {
     color: #000;
     text-decoration: none;
     float: right;
-    position: relative;
-    bottom: 10px;
-    left: 5px;
+}
+
+li:nth-child(even) {
+    background-color: #F7F7F7;
+}
+
+a {
+    margin: 0;
+}
+
+.close-todo {
+    color: red;
 }
