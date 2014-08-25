@@ -13,3 +13,48 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+    text-align: center;
+}
+
+input {
+    width: 300px;
+}
+
+#submit {
+    width: 300px;
+}
+
+* {
+    margin: 10px;
+}
+#todos-container {
+    border-top: 1px solid black;
+}
+
+#todos {
+    width: 300px;
+    margin: 0 auto;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+#flash {
+    background-color: green;
+    color: #fff;
+}
+
+#close {
+    color: #000;
+    text-decoration: none;
+    float: right;
+    position: relative;
+    bottom: 10px;
+    left: 5px;
+}
