@@ -16,7 +16,8 @@
 $(document).ready(function () {
 
 //  Create and hide HTML
-
+//  localStorage.setItem("todos-container", $('#todos-container'))
+//  todos = localStorage.getItem("todos-container");
   $('#todos-container').hide();
   $('#completed-container').hide();
 
@@ -65,11 +66,12 @@ $(document).ready(function () {
     window.setTimeout(stopFlash, 5000);
   });
 
-//  Completed
+//  Complete
 
   $('#todos-container').on('click', '.complete-todo', function () {
     $('#completed-container').show();
     $('#todo-list-completed').append($(this).parent());
+    $(this).parent().append("<a href='#' class='undo'>Undo</a>");
     $(this).remove();
     $(this).siblings('#close-todo').css('color', 'black');
 
@@ -83,6 +85,8 @@ $(document).ready(function () {
     };
     window.setTimeout(stopFlash, 5000);
   });
+
+  // Delete Completed
 
   $('#completed-container').on('click', '.close-todo', function () {
     $(this).parent().remove();
@@ -102,5 +106,11 @@ $(document).ready(function () {
     }
   });
 
+//  Undo
 
+  $('#completed-container').on('click', '.undo', function () {
+    $('#todo-list').append($(this).parent());
+    $(this).parent().append("<a href='#' class='complete-todo'>✓</a>");
+    $(this).remove();
+  });
 });

@@ -54,7 +54,7 @@ ul {
     color: #fff;
 }
 
-#close, .close-todo, .complete-todo {
+a {
     color: #000;
     text-decoration: none;
     float: right;
@@ -64,10 +64,6 @@ ul {
 
 li:nth-child(even) {
     background-color: #F7F7F7;
-}
-
-a {
-    margin: 0;
 }
 
 .close-todo {
