@@ -12,16 +12,16 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
 
 $(document).ready(function () {
+
 //  Create and hide HTML
 
   $('#todos-container').hide();
   $('#completed-container').hide();
 
   $('#todos-container').append("<div id='todos'><h2>Todo!</h2><div class='flash'></div><ul id='todo-list'></ul></div>");
-  $('#completed-container').append("<div id='todos-completed'><h2>Completed</h2><div class='flash-completed'></div><ul id='todo-list-completed'></ul></div>");
+  $('#completed-container').append("<div id='todos-completed'><h2>Complete</h2><div class='flash-completed'></div><ul id='todo-list-completed'></ul></div>");
 
   flash = $('.flash');
   flashCompleted = $('.flash-completed');
@@ -71,7 +71,7 @@ $(document).ready(function () {
     $('#completed-container').show();
     $('#todo-list-completed').append($(this).parent());
     $(this).remove();
-//   -> $(this).siblings('#close-todo').css('color', 'black');
+    $(this).siblings('#close-todo').css('color', 'black');
 
     flashCompleted.show();
     flashCompleted.empty();
@@ -91,9 +91,16 @@ $(document).ready(function () {
     flashCompleted.removeAttr('background-color');
     flashCompleted.css('background-color', 'red');
     flashCompleted.append('<span>Todo deleted</span>');
+
+    var stopFlash = function () {
+      $('.flash-completed').slideUp();
+    };
+    window.setTimeout(stopFlash, 5000);
+
+    if ($('#todo-list-completed').is(':empty')) {
+      $('#completed-container').hide();
+    }
   });
 
-  if ($.isEmptyObject($('#completed-container'))) {
-    $('#completed-container').hide();
-  }
+
 });
